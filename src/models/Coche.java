@@ -1,17 +1,24 @@
 package models;
 
-public class Coche extends Vehiculo{
+public class Coche extends Vehiculo {
 	private String ventanillas;
-	
-	public Coche(){
+
+	public Coche(String marca, String matricula, String color, 
+			double vMax, String telefonoPropietario) {
+		
+		super(marca,matricula,color,vMax,telefonoPropietario);
 		subirVentanillas();
 	}
-	
-	public void subirVentanillas(){
+
+	public String getVentanillas() {
+		return ventanillas;
+	}
+
+	public void subirVentanillas() {
 		this.ventanillas = "Subidas";
 	}
-	
-	public void bajarVentanillas(){
+
+	public void bajarVentanillas() {
 		this.ventanillas = "Bajadas";
 	}
 
