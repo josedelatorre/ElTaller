@@ -1,21 +1,48 @@
 package main;
 
+import java.util.Scanner;
+
 import models.*;
 
 public class prueba {
 
-	public static void main(String[] args) {
-		
-		Vehiculo v = new Motocicleta("Honda", "2343VCC", "Amarillo", 200, "698553324");
-		Vehiculo v2 = new Motocicleta("Leo Vince","Honda", "2343VCC", "Amarillo", 200, "698553324");
+	private static Taller t;
 
-		
-		v.arrancar();
-		v.acelerar(20);
-		System.out.println(v.getvAct() + "km/h");
-		System.out.println(v.getColor());
-		((Motocicleta) v).getMarcaEscape();
-		
+	public static void main(String[] args) {
+
+		t = new Taller("Midas");
+		int opcion;
+		do {
+			opcion = mostrarMenu();
+			realizarOpcion(opcion);
+		} while (opcion != 5);
+	}
+
+	public static int mostrarMenu() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("/** MENU **/");
+		System.out.println("1. Añadir vehiculo");
+		System.out.println("2. Reparar vehiculo");
+		System.out.println("3. Listar vehiculos");
+		System.out.println("4. Entregar vehiculo");
+		System.out.println("5. Capturar a Ratata");
+
+		System.out.println("¿Qué desea hacer?: ");
+		return sc.nextInt();
+
+	}
+
+	public static void realizarOpcion(int opcion) {
+		System.out.println("Vamos alla!");
+		switch (opcion) {
+		case 1:
+			t.insertarNuevoVehiculo();
+
+			break;
+		default:
+			break;
+		}
+
 	}
 
 }

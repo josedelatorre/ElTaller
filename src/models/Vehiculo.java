@@ -62,4 +62,9 @@ public abstract class Vehiculo implements Movible, Arrancable {
 		return telefonoPropietario;
 	}
 
+	@Override
+	public String toString() {
+		return "Vehiculo [marca=" + marca + ", matricula=" + matricula + ", telefonoPropietario=" + telefonoPropietario
+				+ "]";
+	}
 }
