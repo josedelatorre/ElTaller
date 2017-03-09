@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Taller {
@@ -55,14 +56,27 @@ public class Taller {
 		System.out.print("Telefono del cliente: ");
 		tel = sc.nextLine();
 		System.out.print("Velocidad max: ");
-		veloMax = sc.nextInt();
-		sc.nextLine();
+		try{
+			veloMax = sc.nextInt();
+			sc.nextLine();
+		} catch (InputMismatchException e){
+			//Si falla la lectura, 120km/h por defecto
+			veloMax = 120;
+		}
 
 		switch (opcion) {
 		case 1:// coche
-			Vehiculo v = new Coche(marca, matricula, color, veloMax, tel);
-			aniadirVehiculoAveriado(v);
+			Vehiculo coche = new Coche(marca, matricula, color, veloMax, tel);
+			aniadirVehiculoAveriado(coche);
 			break;
+		case 2:
+			System.out.print("Marca del escape?: ");
+			String marcaEsc = sc.nextLine();
+			Vehiculo moto = new Motocicleta(marcaEsc, marca, matricula, color, veloMax, tel);
+			aniadirVehiculoAveriado(moto);
+		case 3:
+			Vehiculo ciclo = new Ciclomotor(marca, matricula, color, veloMax, tel);
+			aniadirVehiculoAveriado(ciclo);
 		default:
 			break;
 		}

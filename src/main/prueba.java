@@ -37,9 +37,21 @@ public class prueba {
 		switch (opcion) {
 		case 1:
 			t.insertarNuevoVehiculo();
-
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+		case 5:
+			System.out.println("Capturando a Ratata!!! Buenas tardes.");
 			break;
 		default:
+			System.out.println("[ERROR] Opción no válida.");
 			break;
 		}
 
