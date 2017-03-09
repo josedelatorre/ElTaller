@@ -42,7 +42,7 @@ public class prueba {
 			
 			break;
 		case 3:
-			
+			t.listarVehiculos();
 			break;
 		case 4:
 			

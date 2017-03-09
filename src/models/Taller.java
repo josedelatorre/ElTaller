@@ -23,26 +23,8 @@ public class Taller {
 		return listaReparados;
 	}
 
-	public void listarVehiculosAveriados() {
-		System.out.println("Lista de Averiados: ");
-		for (Vehiculo veh : this.getListaAveriados()) {
-			System.out.println(veh);
-		}
-		if (this.getListaAveriados().isEmpty())
-			System.out.println("No hay vehiculos averiados");
-	}
-
-	public void listarVehiculosReparados() {
-		System.out.println("Lista de Reparados: ");
-		for (Vehiculo veh : this.getListaReparados()) {
-			System.out.println(veh);
-		}
-		if (this.getListaReparados().isEmpty())
-			System.out.println("No hay vehiculos reparados");
-	}
-
 	public void insertarNuevoVehiculo() {
-		int opcion = mostrarMenu();
+		int opcion = mostrarMenuInsertar();
 		String color, matricula, marca, tel;
 		int veloMax = 0;
 		Scanner sc = new Scanner(System.in);
@@ -56,11 +38,11 @@ public class Taller {
 		System.out.print("Telefono del cliente: ");
 		tel = sc.nextLine();
 		System.out.print("Velocidad max: ");
-		try{
+		try {
 			veloMax = sc.nextInt();
 			sc.nextLine();
-		} catch (InputMismatchException e){
-			//Si falla la lectura, 120km/h por defecto
+		} catch (InputMismatchException e) {
+			// Si falla la lectura, 120km/h por defecto
 			veloMax = 120;
 		}
 
@@ -74,20 +56,52 @@ public class Taller {
 			String marcaEsc = sc.nextLine();
 			Vehiculo moto = new Motocicleta(marcaEsc, marca, matricula, color, veloMax, tel);
 			aniadirVehiculoAveriado(moto);
+			break;
 		case 3:
 			Vehiculo ciclo = new Ciclomotor(marca, matricula, color, veloMax, tel);
 			aniadirVehiculoAveriado(ciclo);
+			break;
 		default:
 			break;
 		}
 	}
 
-	private static int mostrarMenu() {
+	public void listarVehiculos() {
+		int opcion = mostrarMenuListar();
+		switch (opcion) {
+		case 1:
+			listarVehiculosAveriados();
+			listarVehiculosReparados();
+			break;
+		case 2:
+			listarVehiculosAveriados();
+			break;
+		case 3:
+			listarVehiculosReparados();
+			break;
+		default:
+			break;
+		}
+	}
+
+	private int mostrarMenuInsertar() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("/** SUBMENU - CREAR VEHICULO **/");
 		System.out.println("1. Coche");
 		System.out.println("2. Motocicleta");
 		System.out.println("3. Ciclomotor");
+
+		System.out.println("¿Qué desea crear?: ");
+		return sc.nextInt();
+
+	}
+
+	private int mostrarMenuListar() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("/** SUBMENU - LISTAR VEHICULO **/");
+		System.out.println("1. Todos");
+		System.out.println("2. Averiados");
+		System.out.println("3. Reparados");
 
 		System.out.println("¿Qué desea crear?: ");
 		return sc.nextInt();
@@ -100,5 +114,23 @@ public class Taller {
 		} else {
 			System.out.println("[ERROR] El vehiculo " + v.getMatricula() + " ya está en el taller!!!");
 		}
+	}
+
+	private void listarVehiculosAveriados() {
+		System.out.println("Lista de Averiados: ");
+		for (Vehiculo veh : this.getListaAveriados()) {
+			System.out.println(veh);
+		}
+		if (this.getListaAveriados().isEmpty())
+			System.out.println("No hay vehiculos averiados");
+	}
+
+	private void listarVehiculosReparados() {
+		System.out.println("Lista de Reparados: ");
+		for (Vehiculo veh : this.getListaReparados()) {
+			System.out.println(veh);
+		}
+		if (this.getListaReparados().isEmpty())
+			System.out.println("No hay vehiculos reparados");
 	}
 }
