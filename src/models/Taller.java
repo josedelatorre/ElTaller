@@ -86,8 +86,8 @@ public class Taller {
 	
 	public void reparar(){
 		Scanner sc = new Scanner(System.in);
-
-		System.out.print("Matricula: ");
+		System.out.println("/** SUBMENU - REPARAR VEHICULO **/");
+		System.out.print("Matricula del vehículo a reparar: ");
 		String matriculaAux = sc.nextLine();
 		Vehiculo vReparar = null;
 		for(Vehiculo v : listaAveriados){
@@ -98,7 +98,9 @@ public class Taller {
 		
 		//Si se encuentra, que comience la reparación.
 		if(vReparar != null){
-			System.out.println("Reparando!");
+			int opcion = mostrarMenuReparar();
+			repararVehiculo(vReparar, opcion);
+			
 		} else {
 			System.out.println("[ERROR]: Vehiculo no encontrado.");
 		}
@@ -122,6 +124,22 @@ public class Taller {
 		System.out.println("1. Todos");
 		System.out.println("2. Averiados");
 		System.out.println("3. Reparados");
+
+		System.out.println("¿Qué desea crear?: ");
+		return sc.nextInt();
+
+	}
+	
+	private int mostrarMenuReparar() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("/** SUBMENU - REPARAR VEHICULO **/");
+		System.out.println("1. Acelerar");
+		System.out.println("2. Frenar");
+		System.out.println("3. Cambiar escape");
+		System.out.println("4. Subir ventanillas");
+		System.out.println("5. Bajar ventanillas");
+		System.out.println("6. Marcar como REPARADO");
+		System.out.println("7. Terminar jornada!");
 
 		System.out.println("¿Qué desea crear?: ");
 		return sc.nextInt();
@@ -159,4 +177,63 @@ public class Taller {
 		if (this.getListaReparados().isEmpty())
 			System.out.println("No hay vehiculos reparados");
 	}
+	
+	private void repararVehiculo(Vehiculo v, int opcion){
+		Scanner sc = new Scanner(System.in);
+		int velocidad;
+		String marcaEsc, confirmacion;
+		switch (opcion) {
+		case 1:
+			System.out.println("¿Cuanto quieres acelerar?");
+			velocidad = sc.nextInt();
+			v.acelerar(velocidad);
+			break;
+		case 2:
+			System.out.println("¿Cuanto quieres frenar?");
+			velocidad = sc.nextInt();
+			v.frenar(velocidad);
+			break;
+		case 3:
+			if(v instanceof Motocicleta){
+				System.out.println("¿Marca del escape?");
+				marcaEsc = sc.nextLine();
+				((Motocicleta) v).setMarcaEscape(marcaEsc);
+			}
+			else{
+				System.out.println("[ERROR]: No podemos cambiarle el escape a un vehiculo que no es una motocicleta.");
+			}
+			break;
+		case 4:
+			if(v instanceof Coche){
+				((Coche) v).subirVentanillas();
+			}
+			else{
+				System.out.println("[ERROR]: No podemos cambiarle el escape a un vehiculo que no es un coche.");
+			}
+			break;
+		case 5:
+			if(v instanceof Coche){
+				((Coche) v).bajarVentanillas();
+			}
+			else{
+				System.out.println("[ERROR]: No podemos cambiarle el escape a un vehiculo que no es un coche.");
+			}
+			break;
+		case 6:
+			System.out.println("[CONFIRMACIÓN] ¿Quieres marcar el vehiculo "+ v.getMatricula() + " como reparado?");
+			confirmacion = sc.nextLine();
+			if(confirmacion.equalsIgnoreCase("SI")){
+				listaAveriados.remove(v);
+				listaReparados.add(v);
+			}
+			break;
+		case 7:
+			System.out.println("[SALIR] Fin de la jornada.");
+			break;
+		default:
+			System.out.println("[ERROR] Opción no válida.");
+			break;
+		}
+	}
+	
 }

@@ -17,5 +17,9 @@ public class Motocicleta extends Vehiculo {
 	public String getMarcaEscape() {
 		return marcaEscape;
 	}
+	
+	public void setMarcaEscape(String marcaEscape){
+		this.marcaEscape = marcaEscape;
+	}
 
 }
