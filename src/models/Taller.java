@@ -83,6 +83,26 @@ public class Taller {
 			break;
 		}
 	}
+	
+	public void reparar(){
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Matricula: ");
+		String matriculaAux = sc.nextLine();
+		Vehiculo vReparar = null;
+		for(Vehiculo v : listaAveriados){
+			if(v.getMatricula().equalsIgnoreCase(matriculaAux)){
+				vReparar = v;
+			}
+		}
+		
+		//Si se encuentra, que comience la reparación.
+		if(vReparar != null){
+			System.out.println("Reparando!");
+		} else {
+			System.out.println("[ERROR]: Vehiculo no encontrado.");
+		}
+	}
 
 	private int mostrarMenuInsertar() {
 		Scanner sc = new Scanner(System.in);
@@ -119,6 +139,12 @@ public class Taller {
 	private void listarVehiculosAveriados() {
 		System.out.println("Lista de Averiados: ");
 		for (Vehiculo veh : this.getListaAveriados()) {
+			if(veh instanceof Coche)
+				System.out.print("[COCHE]: ");
+			else if(veh instanceof Motocicleta)
+				System.out.print("[MOTO]: ");
+			else if(veh instanceof Ciclomotor)
+				System.out.print("[CICLO]: ");
 			System.out.println(veh);
 		}
 		if (this.getListaAveriados().isEmpty())

@@ -39,7 +39,7 @@ public class prueba {
 			t.insertarNuevoVehiculo();
 			break;
 		case 2:
-			
+			t.reparar();
 			break;
 		case 3:
 			t.listarVehiculos();
