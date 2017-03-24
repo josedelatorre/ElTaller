@@ -21,22 +21,24 @@ public class prueba {
 	public static int mostrarMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("/** MENU **/");
-		System.out.println("1. Añadir vehiculo");
+		System.out.println("1. Aï¿½adir vehiculo");
 		System.out.println("2. Reparar vehiculo");
 		System.out.println("3. Listar vehiculos");
 		System.out.println("4. Entregar vehiculo");
 		System.out.println("5. Capturar a Ratata");
 
-		System.out.println("¿Qué desea hacer?: ");
+		System.out.println("ï¿½Quï¿½ desea hacer?: ");
+		sc.close();
 		return sc.nextInt();
 
 	}
 
-	public static void realizarOpcion(int opcion) {
+	public static void realizarOpcion(int option) {
+		int opcion = 0;
 		System.out.println("Vamos alla!");
 		switch (opcion) {
 		case 1:
-			t.insertarNuevoVehiculo();
+			t.insertarVehiculoNuevo();
 			break;
 		case 2:
 			t.reparar();
@@ -51,7 +53,7 @@ public class prueba {
 			System.out.println("Capturando a Ratata!!! Buenas tardes.");
 			break;
 		default:
-			System.out.println("[ERROR] Opción no válida.");
+			System.out.println("[ERROR] Opciï¿½n no vï¿½lida.");
 			break;
 		}
 

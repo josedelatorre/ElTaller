@@ -65,6 +65,10 @@ public class Taller {
 			break;
 		}
 	}
+	
+	public void insertarVehiculoNuevo() {
+		int opcion = mostrarMenuInsertar();
+	}
 
 	public void listarVehiculos() {
 		int opcion = mostrarMenuListar();
@@ -87,7 +91,7 @@ public class Taller {
 	public void reparar(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("/** SUBMENU - REPARAR VEHICULO **/");
-		System.out.print("Matricula del vehículo a reparar: ");
+		System.out.print("Matricula del vehï¿½culo a reparar: ");
 		String matriculaAux = sc.nextLine();
 		Vehiculo vReparar = null;
 		for(Vehiculo v : listaAveriados){
@@ -96,7 +100,7 @@ public class Taller {
 			}
 		}
 		
-		//Si se encuentra, que comience la reparación.
+		//Si se encuentra, que comience la reparaciï¿½n.
 		if(vReparar != null){
 			int opcion = mostrarMenuReparar();
 			repararVehiculo(vReparar, opcion);
@@ -113,7 +117,7 @@ public class Taller {
 		System.out.println("2. Motocicleta");
 		System.out.println("3. Ciclomotor");
 
-		System.out.println("¿Qué desea crear?: ");
+		System.out.println("ï¿½Quï¿½ desea crear?: ");
 		return sc.nextInt();
 
 	}
@@ -125,7 +129,7 @@ public class Taller {
 		System.out.println("2. Averiados");
 		System.out.println("3. Reparados");
 
-		System.out.println("¿Qué desea crear?: ");
+		System.out.println("ï¿½Quï¿½ desea crear?: ");
 		return sc.nextInt();
 
 	}
@@ -141,7 +145,7 @@ public class Taller {
 		System.out.println("6. Marcar como REPARADO");
 		System.out.println("7. Terminar jornada!");
 
-		System.out.println("¿Qué desea crear?: ");
+		System.out.println("ï¿½Quï¿½ desea crear?: ");
 		return sc.nextInt();
 
 	}
@@ -150,7 +154,7 @@ public class Taller {
 		if (!this.listaAveriados.contains(v)) {
 			this.listaAveriados.add(v);
 		} else {
-			System.out.println("[ERROR] El vehiculo " + v.getMatricula() + " ya está en el taller!!!");
+			System.out.println("[ERROR] El vehiculo " + v.getMatricula() + " ya estï¿½ en el taller!!!");
 		}
 	}
 
@@ -184,18 +188,18 @@ public class Taller {
 		String marcaEsc, confirmacion;
 		switch (opcion) {
 		case 1:
-			System.out.println("¿Cuanto quieres acelerar?");
+			System.out.println("ï¿½Cuanto quieres acelerar?");
 			velocidad = sc.nextInt();
 			v.acelerar(velocidad);
 			break;
 		case 2:
-			System.out.println("¿Cuanto quieres frenar?");
+			System.out.println("ï¿½Cuanto quieres frenar?");
 			velocidad = sc.nextInt();
 			v.frenar(velocidad);
 			break;
 		case 3:
 			if(v instanceof Motocicleta){
-				System.out.println("¿Marca del escape?");
+				System.out.println("ï¿½Marca del escape?");
 				marcaEsc = sc.nextLine();
 				((Motocicleta) v).setMarcaEscape(marcaEsc);
 			}
@@ -220,7 +224,7 @@ public class Taller {
 			}
 			break;
 		case 6:
-			System.out.println("[CONFIRMACIÓN] ¿Quieres marcar el vehiculo "+ v.getMatricula() + " como reparado?");
+			System.out.println("[CONFIRMACIï¿½N] ï¿½Quieres marcar el vehiculo "+ v.getMatricula() + " como reparado?");
 			confirmacion = sc.nextLine();
 			if(confirmacion.equalsIgnoreCase("SI")){
 				listaAveriados.remove(v);
@@ -231,7 +235,7 @@ public class Taller {
 			System.out.println("[SALIR] Fin de la jornada.");
 			break;
 		default:
-			System.out.println("[ERROR] Opción no válida.");
+			System.out.println("[ERROR] Opciï¿½n no vï¿½lida.");
 			break;
 		}
 	}
